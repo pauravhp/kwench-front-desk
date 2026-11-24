@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "at": "09:00",
+    "title": "Room card",
+    "text": "Novelty is the workshop room. Connection is a separate meeting room. Both are served by the front desk.",
+    "context": {"room": "Novelty"},
+    "facts": []
+  },
+  {
+    "id": 2,
+    "at": "09:15",
+    "title": "Field Notes booking",
+    "text": "The Field Notes workshop is booked in Novelty for 2:00 p.m. The presenter plans to show slides from a laptop.",
+    "context": {"workshop": "Field Notes", "starts": "14:00"},
+    "facts": []
+  },
+  {
+    "id": 3,
+    "at": "10:00",
+    "title": "Front-desk rota",
+    "text": "Morgan is covering the front desk during arrivals. If a member needs hands-on help, Morgan can direct them to the colleague covering that work.",
+    "context": {"desk": "Morgan"},
+    "facts": []
+  },
+  {
+    "id": 4,
+    "at": "11:00",
+    "title": "Screen support from Priya",
+    "text": "Sam usually handles laptop and screen setup. Kai also knows the meeting-room screens and can cover when available.",
+    "facts": [
+      {
+        "person": "Sam",
+        "skills": [
+          "screen"
+        ]
+      },
+      {
+        "person": "Kai",
+        "skills": [
+          "screen"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "at": "13:30",
+    "title": "Afternoon assignments",
+    "text": "Sam has workshop setup in Novelty. Kai has the member welcome in Connection. Check the latest handoff for who can leave their task.",
+    "facts": []
+  },
+  {
+    "id": 6,
+    "at": "13:50",
+    "title": "Welcome update from Kai",
+    "text": "I’m in Connection with a member for their welcome. I’ll let the desk know when I’m free.",
+    "facts": [
+      {
+        "person": "Kai",
+        "location": "Connection",
+        "availability": "busy"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "at": "13:54",
+    "title": "Desk handoff from Casey",
+    "text": "Sam is in Novelty now. Setup is finished and Sam can help with the screen right away.",
+    "facts": [
+      {
+        "person": "Sam",
+        "location": "Novelty",
+        "availability": "free"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "at": "13:55",
+    "title": "A member at the front desk",
+    "text": "My workshop in Novelty starts in five minutes, and my slides won’t show on the screen. Can someone give me a hand?",
+    "context": {"problem": "The workshop slides won’t show."},
+    "facts": []
+  }
+]
