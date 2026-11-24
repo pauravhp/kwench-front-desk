@@ -4,17 +4,24 @@ The slides are down and Field Notes starts at 2:00 p.m. This desk card gives Mor
 
 ## Open the desk card
 
-Run `python3 serve.py` from the repository root and open [the local desk card](http://127.0.0.1:8731). Choose **Load JSON note** to apply a new handoff and **Reset to opening** to replay the starting notes. The browser and terminal use the same decision logic. GSAP animates the card when a handoff changes it and respects the browser’s reduced motion setting.
+Run `python3 serve.py` from the repository root and open [the local desk card](http://127.0.0.1:8731). The browser and terminal versions require Python 3.10 or newer and have no packages to install.
 
-## Opening notes
+1. The opening card recommends **Sam in Novelty**. Note 07 confirms Sam has finished setup and can help with the screen right away.
+2. Choose **Apply minute-40 note**, or choose **Load JSON note** and select [`data/minute-40.json`](data/minute-40.json). Both controls apply the same note through the same workflow. The card now recommends **Kai in Connection**. Note 09 confirms Kai has finished the welcome and can help now, while Sam is tied up past the workshop start. Note 04 establishes Kai’s screen skills.
+3. Choose **Reset to opening** to return to the first eight notes. Open **All shift notes** to read the notes used in the current state.
 
-Run from the repository root with Python 3.10 or newer. The browser and terminal versions have no packages to install.
+The browser and terminal use the same decision logic. [GSAP](https://gsap.com/docs/v3/) animates the updated recommendation and respects the browser’s reduced motion setting.
+
+[View the desk card after Priya’s handoff](evidence/desk-card.png).
+
+## Replay both states in a terminal
 
 ```sh
 python3 desk.py
+python3 desk.py --add data/minute-40.json
 ```
 
-At the fictional desk time of 1:55 p.m., ask **Sam in Novelty**. Priya confirms Sam handles screen setup (04). Casey says Sam has finished setup and can help immediately (07). Kai knows the screens and is still with a member in Connection (06).
+Both commands answer Morgan’s question at the same fictional desk time of 1:55 p.m. The first reads the eight starting notes and returns Sam. The second includes Priya’s handoff and returns Kai. Each result includes the supporting notes and the action Morgan can take before 2:00 p.m.
 
 ## Take a new handoff
 
@@ -33,3 +40,5 @@ The card keeps the latest explicit fact for each person’s skills, location, an
 ```sh
 python3 -m unittest discover -s tests -v
 ```
+
+The tests cover both rehearsal states, the winning note for each decision, and why a future note or a planned assignment cannot establish availability now. To check the browser, perform the three steps above and confirm the names, rooms, and evidence change as described.

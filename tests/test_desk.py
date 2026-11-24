@@ -24,6 +24,18 @@ class DeskTest(unittest.TestCase):
         notes = load_notes(START)
         self.assertIsNone(recommend(notes, "13:45")["recommendation"])
 
+    def test_minute_40_changes_the_recommendation_at_the_same_desk_time(self):
+        notes = load_notes(START, [START.with_name("minute-40.json")])
+        result = recommend(notes)
+        pick = result["recommendation"]
+        self.assertEqual(result["as_of"], "13:55")
+        self.assertEqual((pick["person"], pick["location"]), ("Kai", "Connection"))
+        self.assertEqual(pick["evidence"]["skills"]["note"], 4)
+        self.assertEqual(pick["evidence"]["availability"]["note"], 9)
+        self.assertEqual(pick["evidence"]["location"]["note"], 9)
+        self.assertEqual(result["excluded"][0]["person"], "Sam")
+        self.assertIn("ask them to help in Novelty now", render(result, notes))
+
     def test_later_note_overrides_only_fields_it_mentions(self):
         with tempfile.TemporaryDirectory() as tmp:
             handoff = Path(tmp) / "example.json"

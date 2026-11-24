@@ -1,0 +1,10 @@
+{
+  "id": 9,
+  "at": "13:55",
+  "title": "New message from Priya",
+  "text": "Sam usually handles the screen but just got tied up for another 15 minutes. Kai has finished the welcome and can help with the screen right now. Kai is in Connection.",
+  "facts": [
+    {"person": "Sam", "availability": "busy"},
+    {"person": "Kai", "location": "Connection", "availability": "free"}
+  ]
+}
