@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5eb">
+  <title>Ask Now · KWENCH Front Desk</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/desk.css">
+  <script src="/vendor/gsap.min.js" defer></script>
+  <script src="/desk.js" defer></script>
+</head>
+<body>
+  <main class="desk">
+    <header class="masthead">
+      <span class="wordmark">KWENCH<span class="slash">/</span>Front desk</span>
+      <span id="shift-label" class="shift-label">Opening shift</span>
+    </header>
+
+    <section class="incident" aria-labelledby="incident-title">
+      <div>
+        <h1 id="incident-title">The slides won’t show.</h1>
+        <p id="booking">Field Notes · Novelty · 2:00 p.m. start</p>
+      </div>
+      <div class="deadline" aria-label="Time until workshop">
+        <strong id="time-left">5 min</strong>
+        <span>until workshop</span>
+      </div>
+    </section>
+
+    <div class="desk-grid">
+      <section id="answer" class="answer" aria-labelledby="answer-title" aria-live="polite" aria-busy="true">
+        <div class="answer-bar">
+          <h2 id="answer-title">Who to ask now</h2>
+          <span id="desk-time">1:55 p.m.</span>
+        </div>
+        <div class="answer-body">
+          <p id="person" class="person">Checking handoff…</p>
+          <p id="location" class="location" hidden></p>
+          <p id="why" class="why"></p>
+        </div>
+        <p class="action" id="action" hidden></p>
+      </section>
+
+      <section class="evidence" aria-labelledby="evidence-title">
+        <h2 id="evidence-title">Why this person</h2>
+        <ol id="evidence"></ol>
+        <p id="unavailable" class="unavailable" hidden></p>
+      </section>
+    </div>
+
+    <section class="handoff" aria-labelledby="handoff-title">
+      <div>
+        <h2 id="handoff-title">New handoff</h2>
+        <p>Load a shift note to see who can help now.</p>
+      </div>
+      <div class="controls">
+        <button type="button" id="apply" class="primary" hidden>Apply minute-40 note</button>
+        <button type="button" id="browse">Load JSON note</button>
+        <input id="file" type="file" accept=".json,application/json" hidden>
+        <button type="button" id="reset" hidden>Reset to opening</button>
+      </div>
+      <p id="status" role="status" hidden></p>
+    </section>
+
+    <details>
+      <summary><span id="notes-count">Shift notes</span></summary>
+      <ol id="notes" class="all-notes"></ol>
+    </details>
+    <noscript>This desk card needs JavaScript. Run <code>python3 desk.py</code> for the terminal version.</noscript>
+  </main>
+</body>
+</html>

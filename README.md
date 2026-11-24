@@ -1,10 +1,14 @@
 # KWENCH / Ask Now
 
-The slides are down and Field Notes starts at 2:00 p.m. This terminal desk card gives Morgan a person to ask, where to find them, and the handoff that supports the recommendation.
+The slides are down and Field Notes starts at 2:00 p.m. This desk card gives Morgan a person to ask, where to find them, and the handoff that supports the recommendation.
+
+## Open the desk card
+
+Run `python3 serve.py` from the repository root and open [the local desk card](http://127.0.0.1:8731). Choose **Load JSON note** to apply a new handoff and **Reset to opening** to replay the starting notes. The browser and terminal use the same decision logic. GSAP animates the card when a handoff changes it and respects the browser’s reduced motion setting.
 
 ## Opening notes
 
-Run from the repository root with Python 3.10 or newer. There are no packages to install.
+Run from the repository root with Python 3.10 or newer. The browser and terminal versions have no packages to install.
 
 ```sh
 python3 desk.py

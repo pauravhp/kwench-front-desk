@@ -21,21 +21,31 @@ def load_notes(path, additions=()):
     for addition in additions:
         note = json.loads(Path(addition).read_text(encoding="utf-8"))
         notes.extend(note if isinstance(note, list) else [note])
+    return order_notes(notes)
+
+
+def order_notes(notes):
     ids = set()
     for note in notes:
+        if not isinstance(note, dict) or type(note.get("id")) is not int or note["id"] < 1:
+            raise ValueError("Every note needs a positive integer ID.")
         if note["id"] in ids:
             raise ValueError(f"Duplicate note ID: {note['id']}")
         ids.add(note["id"])
         minutes(note["at"])
-        if not note["text"].strip():
-            raise ValueError("Every note needs its original text")
+        if any(not isinstance(note.get(key), str) or not note[key].strip() for key in ("title", "text")):
+            raise ValueError("Every note needs a title and its original text.")
         for fact in note.get("facts", []):
-            if not fact.get("person"):
-                raise ValueError("Every shift fact needs a person")
+            if not isinstance(fact, dict) or not isinstance(fact.get("person"), str) or not fact["person"].strip():
+                raise ValueError("Every shift fact needs a person.")
             if "availability" in fact and fact["availability"] not in ("free", "busy", "unknown"):
-                raise ValueError("Availability must be free, busy, or unknown")
+                raise ValueError("Availability must be free, busy, or unknown.")
+            if "skills" in fact and not isinstance(fact["skills"], list):
+                raise ValueError("Skills must be a list.")
+            if fact.get("location") is not None and not isinstance(fact["location"], str):
+                raise ValueError("Location must be a room name or null.")
             if set(fact) - (FIELDS | {"person"}):
-                raise ValueError("Unknown shift field; use person, skills, location, availability")
+                raise ValueError("Use person, skills, location, and availability for shift facts.")
     return sorted(notes, key=lambda n: (minutes(n["at"]), n["id"]))
 
 
